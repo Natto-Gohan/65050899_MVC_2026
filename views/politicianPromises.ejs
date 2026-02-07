@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Politician Promises</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<%- include('partials/navbar') %>
+
+<div class="max-w-4xl mx-auto">
+  <h1 class="text-2xl font-bold mb-4">
+    คำสัญญาของ <%= politician.name %>
+  </h1>
+
+  <% promises.forEach(p => { %>
+  <div class="bg-white p-5 rounded shadow mb-3">
+    <div class="flex justify-between items-start gap-4">
+
+      <div>
+        <h2 class="font-semibold text-lg"><%= p.detail %></h2>
+
+        <a
+          href="/promise/<%= p.promise_id %>"
+          class="text-blue-600 hover:underline text-sm"
+        >
+          ดูรายละเอียด →
+        </a>
+      </div>
+
+      <span
+        class="inline-flex items-center justify-center w-28 h-8 text-sm font-medium rounded-full
+        <%= p.status === 'เงียบหาย'
+          ? 'bg-red-100 text-red-700'
+          : p.status === 'กำลังดำเนินการ'
+          ? 'bg-yellow-100 text-yellow-700'
+          : 'bg-green-100 text-green-700' %>">
+        <%= p.status %>
+      </span>
+
+    </div>
+  </div>
+<% }) %>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Progress</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<%- include('partials/navbar') %>
+
+<div class="max-w-xl mx-auto bg-white p-6 rounded shadow">
+  <h1 class="text-xl font-bold mb-4">อัปเดตความคืบหน้า</h1>
+
+  <form method="POST" action="/promise/<%= id %>/progress">
+    <textarea
+      name="detail"
+      class="w-full border rounded p-3 mb-4"
+      rows="4"
+      placeholder="รายละเอียดความคืบหน้า"
+      required
+    ></textarea>
+
+    <button
+      class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+    >
+      บันทึก
+    </button>
+  </form>
+</div>
+
+</body>
+</html>

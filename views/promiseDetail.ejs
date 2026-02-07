@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Promise Detail</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<%- include('partials/navbar') %>
+
+<div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
+  <h1 class="text-2xl font-bold mb-2"><%= promise.detail %></h1>
+  <p class="text-gray-600 mb-4">
+    นักการเมือง: <%= promise.politician_name %>
+  </p>
+
+  <p class="mb-4 flex items-center gap-2">
+  สถานะ:
+  <span
+    class="inline-flex items-center justify-center w-28 h-8 text-sm font-medium rounded-full
+    <%= promise.status === 'เงียบหาย'
+      ? 'bg-red-100 text-red-700'
+      : promise.status === 'กำลังดำเนินการ'
+      ? 'bg-yellow-100 text-yellow-700'
+      : 'bg-green-100 text-green-700' %>"
+    >
+    <%= promise.status %>
+  </span>
+</p>
+
+  <% if (promise.status !== 'เงียบหาย') { %>
+    <a
+      href="/promise/<%= promise.promise_id %>/progress"
+      class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+    >
+      อัปเดตความคืบหน้า
+    </a>
+  <% } %>
+
+  <hr class="my-6">
+
+  <h2 class="font-bold mb-2">ประวัติความคืบหน้า</h2>
+
+  <% updates.forEach(u => { %>
+    <div class="border-l-4 border-blue-500 pl-4 mb-3">
+      <p class="text-sm text-gray-500"><%= u.update_date %></p>
+      <p><%= u.detail %></p>
+    </div>
+  <% }) %>
+</div>
+
+</body>
+</html>
