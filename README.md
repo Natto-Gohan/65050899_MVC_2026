@@ -15,5 +15,5 @@ npm i express ejs sql sqlite3
 รันโปรเจกต์ด้วยคำสั่ง
 
 ```bash
-npm run dev
+node app
 ```
